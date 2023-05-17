@@ -31,6 +31,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:13.5.0"],\
+            ["classnames", "npm:2.3.2"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:18.2.0"],\
             ["react-icons", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:4.8.0"],\
@@ -6237,6 +6238,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:13.5.0"],\
+            ["classnames", "npm:2.3.2"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:18.2.0"],\
             ["react-icons", "virtual:70c05a553eef66299cac7fa62e81bcf17c63f0c9fc4a25199b2ec9e668746c50f56a6ba1cd9c9776e68bd87315b17cece8a6ec0adf38ce45edf5c95306a79ba5#npm:4.8.0"],\
@@ -6481,6 +6483,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/cjs-module-lexer-npm-1.2.2-473ce063ea-977f3f042b.zip/node_modules/cjs-module-lexer/",\
           "packageDependencies": [\
             ["cjs-module-lexer", "npm:1.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["classnames", [\
+        ["npm:2.3.2", {\
+          "packageLocation": "./.yarn/cache/classnames-npm-2.3.2-d2fdae468d-2c62199789.zip/node_modules/classnames/",\
+          "packageDependencies": [\
+            ["classnames", "npm:2.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
