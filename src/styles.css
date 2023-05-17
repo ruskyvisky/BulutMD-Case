@@ -8,5 +8,5 @@ body {
   }
 
 .grayscale {
-    filter: grayscale(100%);
+    filter: opacity(40%);
   }

@@ -1,17 +1,13 @@
 import React from 'react';
-import '../styles.css'
+import '../styles.css';
 import Navbar from '../components/Navbar/navbar';
-import Card from '../components/HomePageCard/card';
+import Card from '../components/HomePageCards/card';
+
 function App() {
   return (
     <>
-      
-      <Navbar/>
-      <Card/>
-    
-    
-      
-      
+      <Navbar />
+     <Card/>
     </>
   );
 }

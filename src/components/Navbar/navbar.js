@@ -3,8 +3,9 @@ import NavbarItem from "../NavbarItem/navbarItem";
 import MobileMenu from "../MobileMenu/mobileMenu";
 import { useState , useEffect } from "react";
 import { BsChevronDown, BsSearch , BsBell} from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
-  const TOP_OFFSET = 66; // Height of the navbar
+  const navigate = useNavigate();
   const [MobileMenuvisible, setMobileMenuVisible] = useState(false); 
   const [showBackground, setShowBackground] = useState(false); 
 
@@ -36,9 +37,16 @@ export default function Navbar() {
             "
         > 
         {/* NAVBAR ITEM LIST  */}
-          <NavbarItem label="Home" /> 
-          <NavbarItem label="Series" />
-          <NavbarItem label="Films" />
+          <NavbarItem label="Home" onClick={()=>{
+            console.log("home clicked")
+            navigate("/")
+          }} /> 
+          <NavbarItem label="Series" onClick={()=>{
+            navigate("/series")
+          }} />
+          <NavbarItem label="Films" onClick={()=>{
+            navigate("/films")
+          }} />
         </div>
 
         {/* MOBILE MENU ICON  */}
