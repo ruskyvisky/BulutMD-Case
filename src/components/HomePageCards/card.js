@@ -23,7 +23,7 @@ const Card = () => {
           <img
             src="/images/films.jpg"
             className={cx("h-screen object-cover", {
-              "scale-110": isMouseOnLeft,
+
               "grayscale": isMouseOnLeft,
             })}
           />
@@ -47,7 +47,7 @@ const Card = () => {
             src="/images/series.jpg"
            
             className={cx("h-screen object-cover", {
-              "scale-110": isMouseOnRight,
+            
               "grayscale": isMouseOnRight,
             })}
           />
