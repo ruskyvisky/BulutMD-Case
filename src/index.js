@@ -5,18 +5,22 @@ import Home from './Screens/home';
 import Series from './Screens/series';
 import Films from './Screens/films';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { store } from './Redux/store'
+import { Provider } from 'react-redux'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode> <Router>
+  <React.StrictMode> 
+    <Provider store={store}>
+    <Router>
   <Routes>
     <Route path="/" exact element={<Home />} />
     <Route path="/series" element={<Series />} />
     <Route path="/films" element={<Films />} />
   </Routes>
 </Router>
-
+</Provider>
   </React.StrictMode>
 );
 
