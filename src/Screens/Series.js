@@ -17,8 +17,8 @@ const Series = () => {
   const handleSearch = (searchTerm) => {
     if (searchTerm.length >= 3) {
       const filteredSeries = series.filter((item) => {
-        const title = item.title.toLowerCase();
-        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        const title = item.title.toLowerCase(); // title changing to lowercase to make the search case insensitive
+        const lowerCaseSearchTerm = searchTerm.toLowerCase(); 
 
         return title.includes(lowerCaseSearchTerm);
       });
@@ -46,17 +46,17 @@ const Series = () => {
    const displayedSeries =
    filteredSeries.length > 0
      ? filteredSeries
-     : sortBy === sortOptionsEnum.NORMAL // Kontrol ekleniyor
-     ? series.filter((series) => series.programType === "series").slice(0, 18) // İlk 18 seriyi göster
+     : sortBy === sortOptionsEnum.NORMAL 
+     ? series.filter((series) => series.programType === "series").slice(0, 18) // Show the first 18 series
      : series.filter((series) => series.programType === "series");
 
-  const sortedSeries = sortSeries(displayedSeries);
+  const sortedSeries = sortSeries(displayedSeries); // sortedSeries is an array of series sorted by the selected sort option
   return (
     <>
       <Navbar onSearch={handleSearch} />
       <div className="flex flex-wrap justify-center items-center h-screen">
         {sortedSeries
-          .filter((item) => item.programType === "series")
+          .filter((item) => item.programType === "series") // filter out the series
           .map((item, index) => (
             <WatchCard
               key={index}

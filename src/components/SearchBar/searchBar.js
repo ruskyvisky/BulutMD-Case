@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BsSearch } from "react-icons/bs";
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -8,11 +7,11 @@ const SearchBar = ({ onSearch }) => {
     const searchTerm = event.target.value;
     setSearchTerm(searchTerm);
 
-    if (searchTerm.length >= 3) {
+    if (searchTerm.length >= 3) { // if the search term is 3 or more characters long, then search
       onSearch(searchTerm);
     }
     
-    if (searchTerm.length == 0 ) {
+    if (searchTerm.length == 0 ) { // Restart the search if the search term is empty
       onSearch(searchTerm);
     }
   };

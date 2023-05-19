@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BsChevronDown } from "react-icons/bs";
 import {
   setSortBy,
   selectSortBy,
@@ -10,9 +11,11 @@ const DropdownButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
-  const dispatch = useDispatch();
-  const sortBy = useSelector(selectSortBy);
+  const dispatch = useDispatch(); // dispatch actions
+  const sortBy = useSelector(selectSortBy); // get the current sort by from the store
 
+
+  // Options for the dropdown
   const options = [
     { id: 1, label: "Sort by new", value: "newest" },
     { id: 2, label: "Sort by old", value: "oldest" },
@@ -37,8 +40,10 @@ const DropdownButton = () => {
           className="inline-flex justify-center w-full px-4 py-2 mt-2 text-sm font-medium text-white bg-red-700 rounded-md hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {selectedOption !== "" ? selectedOption : "Sort"}
+          {selectedOption !== "" ? selectedOption : "Sort"} 
+          <BsChevronDown className="ml-2 mt-1" />
         </button>
+
       </div>
       {isOpen && (
         <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">

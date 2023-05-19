@@ -1,7 +1,7 @@
 import React from 'react';
 import "../Styles/styles.css";
 import Navbar from '../components/Navbar/navbar';
-import Card from '../components/HomePageCards/card';
+import Card from '../components/HomePageCard/homePageCard';
 
 function App() {
   return (

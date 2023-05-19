@@ -18,7 +18,7 @@ const Films = () => {
   const handleSearch = (searchTerm) => {
     if (searchTerm.length >= 3) {
       const filteredFilms = films.filter((item) => {
-        const title = item.title.toLowerCase();
+        const title = item.title.toLowerCase(); // title changing to lowercase to make the search case insensitive
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
 
         return title.includes(lowerCaseSearchTerm);
@@ -44,17 +44,17 @@ const Films = () => {
   const displayedFilms =
   filteredFilms.length > 0
     ? filteredFilms
-    : sortBy === sortOptionsEnum.NORMAL // 
+    : sortBy === sortOptionsEnum.NORMAL 
     ? films.filter((film) => film.programType === "movie").slice(0, 18) // show the first 18 movies
     : films.filter((film) => film.programType === "movie"); // show all movies
 
-const sortedFilms = sortFilms(displayedFilms);
+const sortedFilms = sortFilms(displayedFilms); // sortedFilms is an array of films sorted by the selected sort option
   return (
     <>
       <Navbar onSearch={handleSearch} />
       <div className="flex flex-wrap justify-center items-center h-screen">
         {sortedFilms
-          .filter((item) => item.programType === "movie")
+          .filter((item) => item.programType === "movie") // filter out the movies
           .map((item, index) => (
             <WatchCard
               key={index}

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
+// Sort options ENUM 
  export const  sortOptionsEnum = {
   OLDEST: 'oldest',
   NEWEST: 'newest',
@@ -16,10 +16,10 @@ const sortSlice = createSlice({
   name: 'sort',
   initialState,
   reducers: {
-    setSortBy: (state, action) => {
+    setSortBy: (state, action) => { // action.payload is the value of the sort option
       state.sortBy = action.payload;
     },
-    resetSortBy: (state) => {
+    resetSortBy: (state) => { // reset the sort option to the default value
       state.sortBy = sortOptionsEnum.NORMAL;
     },
   },

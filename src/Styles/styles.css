@@ -6,7 +6,3 @@
 body {
     @apply bg-zinc-900 overflow-x-hidden h-full;
   }
-
-.opacityImage {
-    filter: opacity(40%);
-  }

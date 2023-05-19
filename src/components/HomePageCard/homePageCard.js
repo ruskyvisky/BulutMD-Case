@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import "../../Styles/styles.css";
-
+import { useNavigate } from "react-router-dom";
 const Card = ({ imageSrc, cardTitle, cardSubtitle, isRight }) => {
   const [isMouseOnCard, setIsMouseOnCard] = useState(false);
-
+  const navigate = useNavigate();
   const handleMouseMove = (event) => {
     const { clientX } = event;
     setIsMouseOnCard(
@@ -26,10 +26,16 @@ const Card = ({ imageSrc, cardTitle, cardSubtitle, isRight }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative">
+      <div className="relative"
+        onClick={() => {
+          console.log(cardTitle);
+          navigate(`/${cardTitle.toLowerCase()}`);}
+        }
+      >
         <img
+          
           src={imageSrc}
-          className={cx("w-full h-screen object-cover", {
+          className={cx("w-screen h-screen object-cover ", {
             "opacity-40": isMouseOnCard,
             "opacity-100": !isMouseOnCard,
         

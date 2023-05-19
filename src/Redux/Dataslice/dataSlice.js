@@ -9,6 +9,6 @@ const dataSlice = createSlice({
   reducers: {},
 });
 
-export const listData = (state) => state.data.dataList.entries;
+export const listData = (state) => state.data.dataList.entries; // returns the list of films and series
 
 export default dataSlice.reducer;
