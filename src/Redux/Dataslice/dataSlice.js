@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import dataList from '../../utils/data.json';
+import dataList from '../../Utils/data.json';
 
 const initialState = {dataList};
 

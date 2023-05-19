@@ -4,12 +4,16 @@ import { useSelector } from "react-redux";
 import { listData } from "../Redux/DataSlice/dataSlice";
 import { selectSortBy } from "../Redux/SortSlice/sortSlice";
 import Navbar from "../components/Navbar/navbar";
+import {
+  sortByOldest,
+  sortByNewest,
+  sortByRandom,
+} from "../Functions/sortFunctions";
 
 const Series = () => {
   const series = useSelector(listData);
   const sortBy = useSelector(selectSortBy);
   const [filteredSeries, setFilteredSeries] = useState([]);
-
   const handleSearch = (searchTerm) => {
     if (searchTerm.length >= 3) {
       const filteredSeries = series.filter((item) => {
@@ -27,17 +31,22 @@ const Series = () => {
 
   const sortSeries = (seriesData) => {
     switch (sortBy) {
-      case 'oldest':
-        return seriesData.sort((a, b) => a.releaseYear - b.releaseYear);
-      case 'newest':
-        return seriesData.sort((a, b) => b.releaseYear - a.releaseYear);
-      case 'random':
-        return seriesData.sort(() => Math.random() - 0.5);
+      case "oldest":
+        return sortByOldest(seriesData); // sortByOldest is a function from src\Functions\sortFunctions.js
+      case "newest":
+        return sortByNewest(seriesData); // sortByNewest is a function from src\Functions\sortFunctions.js
+      case "random":
+        return sortByRandom(seriesData); //  sortByRandom is a function from src\Functions\sortFunctions.js
       default:
         return seriesData;
     }
   };
-  const displayedSeries = filteredSeries.length > 0 ? filteredSeries : series.filter(series => series.programType === "series");
+
+   // 
+  const displayedSeries =
+    filteredSeries.length > 0
+      ? filteredSeries
+      : series.filter((series) => series.programType === "series");
 
   const sortedSeries = sortSeries(displayedSeries);
   return (

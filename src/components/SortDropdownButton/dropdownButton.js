@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortBy, selectSortBy } from '../../Redux/SortSlice/sortSlice';
+import { setSortBy, selectSortBy ,resetSortBy} from '../../Redux/SortSlice/sortSlice';
 
 const DropdownButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +14,10 @@ const DropdownButton = () => {
     { id: 2, label: 'Sort by old', value: 'oldest' },
     { id: 3, label: 'Sort randomly', value: 'random' },
   ];
+  useEffect(() => {
+    // component did reset sort by
+    dispatch(resetSortBy());
+  }, [dispatch]);
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option.label);

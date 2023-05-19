@@ -1,11 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
-import WatchCard from '../components/WatchCard/watchCard';
+import React from "react";
+import { useState } from "react";
+import WatchCard from "../components/WatchCard/watchCard";
 import { useSelector } from "react-redux";
 import { listData } from "../Redux/DataSlice/dataSlice";
 import { selectSortBy } from "../Redux/SortSlice/sortSlice";
-import Navbar from '../components/Navbar/navbar';
-
+import Navbar from "../components/Navbar/navbar";
+import {
+  sortByOldest,
+  sortByNewest,
+  sortByRandom,
+} from "../Functions/sortFunctions";
 const Films = () => {
   const films = useSelector(listData);
   const sortBy = useSelector(selectSortBy);
@@ -13,11 +17,11 @@ const Films = () => {
 
   const handleSearch = (searchTerm) => {
     if (searchTerm.length >= 3) {
-      const filteredFilms = films.filter(item => {
+      const filteredFilms = films.filter((item) => {
         const title = item.title.toLowerCase();
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
 
-        return  title.includes(lowerCaseSearchTerm);
+        return title.includes(lowerCaseSearchTerm);
       });
 
       setFilteredFilms(filteredFilms);
@@ -25,23 +29,38 @@ const Films = () => {
       setFilteredFilms([]);
     }
   };
-  const displayedFilms = filteredFilms.length > 0 ? filteredFilms : films.filter(film => film.programType === "movie").slice(0, 18);
-
+  const sortFilms = (seriesData) => {
+    switch (sortBy) {
+      case "oldest":
+        return sortByOldest(seriesData); // sortByOldest is a function from src\Functions\sortFunctions.js
+      case "newest":
+        return sortByNewest(seriesData); // sortByNewest is a function from src\Functions\sortFunctions.js
+      case "random":
+        return sortByRandom(seriesData); //  sortByRandom is a function from src\Functions\sortFunctions.js
+      default:
+        return seriesData;
+    }
+  };
+  const displayedFilms =
+    filteredFilms.length > 0
+      ? filteredFilms
+      : films.filter((film) => film.programType === "movie").slice(0, 18);
+  const sortedFilms = sortFilms(displayedFilms);
   return (
     <>
       <Navbar onSearch={handleSearch} />
       <div className="flex flex-wrap justify-center items-center h-screen">
-      {displayedFilms
-  .filter(item => item.programType === "movie")
-  .map((item, index) => (
-    <WatchCard
-      key={index}
-      poster={item.images["Poster Art"].url}
-      description={item.description}
-      title={item.title}
-      releaseDate={item.releaseYear}
-    />
-  ))}
+        {sortedFilms
+          .filter((item) => item.programType === "movie")
+          .map((item, index) => (
+            <WatchCard
+              key={index}
+              poster={item.images["Poster Art"].url}
+              description={item.description}
+              title={item.title}
+              releaseDate={item.releaseYear}
+            />
+          ))}
       </div>
     </>
   );

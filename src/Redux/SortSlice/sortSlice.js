@@ -1,15 +1,14 @@
-// slice.js
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const sortOptionsEnum = {
   OLDEST: 'oldest',
   NEWEST: 'newest',
   RANDOM: 'random',
+  NORMAL: 'normal',
 };
 
 const initialState = {
-  sortBy: sortOptionsEnum.OLDEST,
+  sortBy: sortOptionsEnum.NORMAL,
 };
 
 const sortSlice = createSlice({
@@ -19,10 +18,13 @@ const sortSlice = createSlice({
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
     },
+    resetSortBy: (state) => {
+      state.sortBy = sortOptionsEnum.NORMAL;
+    },
   },
 });
 
-export const { setSortBy } = sortSlice.actions;
+export const { setSortBy, resetSortBy } = sortSlice.actions;
 
 export const selectSortBy = (state) => state.sort.sortBy;
 
