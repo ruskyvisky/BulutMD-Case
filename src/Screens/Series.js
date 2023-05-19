@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import WatchCard from "../components/WatchCard/watchCard";
 import { useSelector } from "react-redux";
 import { listData } from "../Redux/DataSlice/dataSlice";
-import { selectSortBy } from "../Redux/SortSlice/sortSlice";
+import { selectSortBy ,sortOptionsEnum } from "../Redux/SortSlice/sortSlice";
 import Navbar from "../components/Navbar/navbar";
 import {
   sortByOldest,
@@ -43,10 +43,12 @@ const Series = () => {
   };
 
    // 
-  const displayedSeries =
-    filteredSeries.length > 0
-      ? filteredSeries
-      : series.filter((series) => series.programType === "series");
+   const displayedSeries =
+   filteredSeries.length > 0
+     ? filteredSeries
+     : sortBy === sortOptionsEnum.NORMAL // Kontrol ekleniyor
+     ? series.filter((series) => series.programType === "series").slice(0, 18) // İlk 18 seriyi göster
+     : series.filter((series) => series.programType === "series");
 
   const sortedSeries = sortSeries(displayedSeries);
   return (

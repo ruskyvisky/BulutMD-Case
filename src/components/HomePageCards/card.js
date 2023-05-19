@@ -17,7 +17,7 @@ const Card = () => {
     {/* // Catching the mouse position */}
       {/* Left Image */}
       <div
-        className={cx("w-1/2 flex items-center justify-center relative")}
+        className={cx("w-1/2 flex items-center justify-center relative cursor-pointer")}
       >
         <div className="relative">
           <img
@@ -40,7 +40,7 @@ const Card = () => {
 
       {/* Right Image */}
       <div
-        className={cx("w-1/2 flex items-center justify-center relative", {})}
+        className={cx("w-1/2 flex items-center justify-center relative cursor-pointer")}
       >
         <div className="relative">
           <img

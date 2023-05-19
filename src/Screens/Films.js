@@ -3,7 +3,7 @@ import { useState } from "react";
 import WatchCard from "../components/WatchCard/watchCard";
 import { useSelector } from "react-redux";
 import { listData } from "../Redux/DataSlice/dataSlice";
-import { selectSortBy } from "../Redux/SortSlice/sortSlice";
+import { selectSortBy , sortOptionsEnum} from "../Redux/SortSlice/sortSlice";
 import Navbar from "../components/Navbar/navbar";
 import {
   sortByOldest,
@@ -42,10 +42,13 @@ const Films = () => {
     }
   };
   const displayedFilms =
-    filteredFilms.length > 0
-      ? filteredFilms
-      : films.filter((film) => film.programType === "movie").slice(0, 18);
-  const sortedFilms = sortFilms(displayedFilms);
+  filteredFilms.length > 0
+    ? filteredFilms
+    : sortBy === sortOptionsEnum.NORMAL // 
+    ? films.filter((film) => film.programType === "movie").slice(0, 18) // show the first 18 movies
+    : films.filter((film) => film.programType === "movie"); // show all movies
+
+const sortedFilms = sortFilms(displayedFilms);
   return (
     <>
       <Navbar onSearch={handleSearch} />

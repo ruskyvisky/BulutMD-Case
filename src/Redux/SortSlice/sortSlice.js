@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const sortOptionsEnum = {
+ export const  sortOptionsEnum = {
   OLDEST: 'oldest',
   NEWEST: 'newest',
   RANDOM: 'random',

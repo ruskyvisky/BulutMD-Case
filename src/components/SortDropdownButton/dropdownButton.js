@@ -1,18 +1,22 @@
-import React, { useState , useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSortBy, selectSortBy ,resetSortBy} from '../../Redux/SortSlice/sortSlice';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSortBy,
+  selectSortBy,
+  resetSortBy,
+} from "../../Redux/SortSlice/sortSlice";
 
 const DropdownButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
 
   const dispatch = useDispatch();
   const sortBy = useSelector(selectSortBy);
 
   const options = [
-    { id: 1, label: 'Sort by new', value: 'newest' },
-    { id: 2, label: 'Sort by old', value: 'oldest' },
-    { id: 3, label: 'Sort randomly', value: 'random' },
+    { id: 1, label: "Sort by new", value: "newest" },
+    { id: 2, label: "Sort by old", value: "oldest" },
+    { id: 3, label: "Sort randomly", value: "random" },
   ];
   useEffect(() => {
     // component did reset sort by
@@ -33,7 +37,7 @@ const DropdownButton = () => {
           className="inline-flex justify-center w-full px-4 py-2 mt-2 text-sm font-medium text-white bg-red-700 rounded-md hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {selectedOption !== '' ? selectedOption : 'Sort'}
+          {selectedOption !== "" ? selectedOption : "Sort"}
         </button>
       </div>
       {isOpen && (
@@ -43,7 +47,7 @@ const DropdownButton = () => {
               <button
                 key={option.id}
                 className={`group flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${
-                  sortBy === option.value ? 'font-semibold' : ''
+                  sortBy === option.value ? "font-semibold" : ""
                 }`}
                 onClick={() => handleOptionSelect(option)}
               >
