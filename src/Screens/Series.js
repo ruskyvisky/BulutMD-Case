@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import WatchCard from "../components/WatchCard/watchCard";
 import { useSelector } from "react-redux";
-import { listData } from "../Redux/Dataslice/dataSlice";
+import { listData } from "../Redux/DataSlice/dataSlice";
+import { selectSortBy } from "../Redux/SortSlice/sortSlice";
 import Navbar from "../components/Navbar/navbar";
-import DropdownButton from "../components/SortDropdownButton/dropdownButton";
 
 const Series = () => {
   const series = useSelector(listData);
+  const sortBy = useSelector(selectSortBy);
   const [filteredSeries, setFilteredSeries] = useState([]);
 
   const handleSearch = (searchTerm) => {
@@ -24,14 +25,26 @@ const Series = () => {
     }
   };
 
-  const displayedSeries =
-    filteredSeries.length > 0 ? filteredSeries : series.slice(0, 18);
+  const sortSeries = (seriesData) => {
+    switch (sortBy) {
+      case 'oldest':
+        return seriesData.sort((a, b) => a.releaseYear - b.releaseYear);
+      case 'newest':
+        return seriesData.sort((a, b) => b.releaseYear - a.releaseYear);
+      case 'random':
+        return seriesData.sort(() => Math.random() - 0.5);
+      default:
+        return seriesData;
+    }
+  };
+  const displayedSeries = filteredSeries.length > 0 ? filteredSeries : series.filter(series => series.programType === "series");
 
+  const sortedSeries = sortSeries(displayedSeries);
   return (
     <>
       <Navbar onSearch={handleSearch} />
       <div className="flex flex-wrap justify-center items-center h-screen">
-        {displayedSeries
+        {sortedSeries
           .filter((item) => item.programType === "series")
           .map((item, index) => (
             <WatchCard

@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 import WatchCard from '../components/WatchCard/watchCard';
-import { useSelector } from 'react-redux';
-import { listData } from '../Redux/Dataslice/dataSlice';
+import { useSelector } from "react-redux";
+import { listData } from "../Redux/DataSlice/dataSlice";
+import { selectSortBy } from "../Redux/SortSlice/sortSlice";
 import Navbar from '../components/Navbar/navbar';
 
 const Films = () => {
   const films = useSelector(listData);
+  const sortBy = useSelector(selectSortBy);
   const [filteredFilms, setFilteredFilms] = useState([]);
 
   const handleSearch = (searchTerm) => {

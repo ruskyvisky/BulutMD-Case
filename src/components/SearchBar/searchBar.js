@@ -26,12 +26,7 @@ const SearchBar = ({ onSearch }) => {
         value={searchTerm}
         onChange={handleInputChange}
       />
-      <button
-        className="ml-2 m-3 bg-gray-700 text-white rounded-md p-2"
-        type="submit"
-      >
-        <BsSearch size={14} />
-      </button>
+    
     </div>
   );
 };
