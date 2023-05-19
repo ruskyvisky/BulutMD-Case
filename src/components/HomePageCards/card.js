@@ -20,8 +20,8 @@ const Card = ({ imageSrc, cardTitle, cardSubtitle, isRight }) => {
   return (
     <div
       className={cx("flex items-center justify-center relative cursor-pointer", {
-        "w-1/2": !isRight,
-        "w-1/2 ml-auto": isRight,
+        "w-full md:w-1/2": true,
+        "ml-auto": isRight,
       })}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -30,10 +30,11 @@ const Card = ({ imageSrc, cardTitle, cardSubtitle, isRight }) => {
         <img
           src={imageSrc}
           className={cx("w-full h-screen object-cover", {
-            "opacity": !isMouseOnCard,
-            "opacity": isMouseOnCard,
+            "opacity-40": isMouseOnCard,
+            "opacity-100": !isMouseOnCard,
+        
           })}
-          alt=""
+
         />
         {isMouseOnCard && (
           <div className="absolute inset-0 flex items-center justify-center">

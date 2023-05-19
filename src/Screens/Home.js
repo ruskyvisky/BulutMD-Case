@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="flex h-screen">
+      <div className="flex flex-wrap">
         <Card
           cardSubtitle={"Do you want watch Films?"}
           cardTitle={"Films"}
