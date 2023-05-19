@@ -1,67 +1,49 @@
 import React, { useState } from "react";
 import cx from "classnames";
+import "../../Styles/styles.css";
 
-const Card = () => {
-  const [isMouseOnRight, setIsMouseOnRight] = useState(false);
-  const [isMouseOnLeft, setIsMouseOnLeft] = useState(false);
+const Card = ({ imageSrc, cardTitle, cardSubtitle, isRight }) => {
+  const [isMouseOnCard, setIsMouseOnCard] = useState(false);
 
-  const handleMouseMove = (event) => { // Catching the mouse position Function
+  const handleMouseMove = (event) => {
     const { clientX } = event;
-    setIsMouseOnRight(clientX > window.innerWidth / 2);
-    setIsMouseOnLeft(clientX <= window.innerWidth / 2);
+    setIsMouseOnCard(
+      (isRight && clientX > window.innerWidth / 2) ||
+      (!isRight && clientX <= window.innerWidth / 2)
+    );
+  };
+
+  const handleMouseLeave = () => {
+    setIsMouseOnCard(false);
   };
 
   return (
-    
-    <div className="flex h-screen" onMouseMove={handleMouseMove}> 
-    {/* // Catching the mouse position */}
-      {/* Left Image */}
-      <div
-        className={cx("w-1/2 flex items-center justify-center relative cursor-pointer")}
-      >
-        <div className="relative">
-          <img
-            src="/images/films.jpg"
-            className={cx("h-screen object-cover", {
-
-              "grayscale": isMouseOnLeft,
-            })}
-          />
-          {isMouseOnLeft && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-white text-center">
-                <h1 className="text-8xl">Watch Films</h1>
-                <p className="text-lg mt-2">Do you want to watch films?</p>
-              </div>
+    <div
+      className={cx("flex items-center justify-center relative cursor-pointer", {
+        "w-1/2": !isRight,
+        "w-1/2 ml-auto": isRight,
+      })}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="relative">
+        <img
+          src={imageSrc}
+          className={cx("w-full h-screen object-cover", {
+            "opacity": !isMouseOnCard,
+            "opacity": isMouseOnCard,
+          })}
+          alt=""
+        />
+        {isMouseOnCard && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-white text-center">
+              <h1 className="text-8xl">{cardTitle}</h1>
+              <p className="text-lg mt-2">{cardSubtitle}</p>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-
-      {/* Right Image */}
-      <div
-        className={cx("w-1/2 flex items-center justify-center relative cursor-pointer")}
-      >
-        <div className="relative">
-          <img
-            src="/images/series.jpg"
-           
-            className={cx("h-screen object-cover", {
-            
-              "grayscale": isMouseOnRight,
-            })}
-          />
-          {isMouseOnRight && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-white text-center">
-                <h1 className="text-8xl">Watch Series</h1>
-                <p className="text-lg mt-2">Do you want to watch series?</p>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-      
     </div>
   );
 };

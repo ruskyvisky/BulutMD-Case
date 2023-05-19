@@ -7,7 +7,20 @@ function App() {
   return (
     <>
       <Navbar />
-     <Card/>
+      <div className="flex h-screen">
+        <Card
+          cardSubtitle={"Do you want watch Films?"}
+          cardTitle={"Films"}
+          imageSrc={"images/films.jpg"}
+          isRight={false}
+        />
+        <Card
+          cardSubtitle={"Do you want watch Series?"}
+          cardTitle={"Series"}
+          imageSrc={"images/series.jpg"}
+          isRight={true}
+        />
+      </div>
     </>
   );
 }
