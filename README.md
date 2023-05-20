@@ -1,7 +1,12 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+## My Github Commits Docs
+ FEA  : I use it when I add new content to my project.
+ 
+ BUG : I use it when I solve bug on my project.
+ 
+ IMP : I use it when I improvement or refactoring on my code.
 ## Available Scripts
 
 In the project directory, you can run:
