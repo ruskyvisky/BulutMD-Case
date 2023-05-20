@@ -55,8 +55,7 @@ const Series = () => {
     <>
       <Navbar onSearch={handleSearch} />
       <div className="flex flex-wrap justify-center items-center h-screen">
-        {sortedSeries
-          .filter((item) => item.programType === "series") // filter out the series
+        {sortedSeries 
           .map((item, index) => (
             <WatchCard
               key={index}

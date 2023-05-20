@@ -54,7 +54,6 @@ const sortedFilms = sortFilms(displayedFilms); // sortedFilms is an array of fil
       <Navbar onSearch={handleSearch} />
       <div className="flex flex-wrap justify-center items-center h-screen">
         {sortedFilms
-          .filter((item) => item.programType === "movie") // filter out the movies
           .map((item, index) => (
             <WatchCard
               key={index}
